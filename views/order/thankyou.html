@@ -1,0 +1,24 @@
+<div class="row row-eq-height">
+  <div class="col-sm-12 greyContainer">
+  	<h3>Thank You</h3>
+  	<div class="row">
+  		<div class="col-sm-1"></div>
+  		<div class="col-sm-8">
+  			<p class="bold-font">Thank you {{user.firstname}} {{user.lastname}}</p>
+  			<p class="bold-font">We have recieved your order for Rs.{{order.totalAmount}}.</p>
+  			<p class="bold-font">We will deliever your order to the following address:</p>
+  			<p class="small-margin">{{user.address1}}</p>
+  			<p class="small-margin">{{user.address2}}</p>
+  			<p class="small-margin">{{user.city}}</p>
+  			<p class="small-margin">{{user.state}}</p>
+  			<p class="small-margin">{{user.pin}}</p><br/>
+  			<p class="small-margin">{{user.phone}}</p>
+  		</div>
+    </div>
+    <div class="center">
+	<a href="#"><button type="button" class="btn btn-primary">
+		Go back to Home
+	</button></a>
+</div>
+  </div>
+</div>

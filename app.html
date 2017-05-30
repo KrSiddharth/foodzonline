@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app="app">
+<head>
+	<title>foodzonline</title>
+	 <link href="modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+	 <script src="modules/angular/angular.min.js"></script>
+	 <script src="modules/angular-ui-router/release/angular-ui-router.min.js"></script>
+	 <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular-messages.js"></script>
+	 <script src="./app.js"></script>
+	 <script src="services/service.js"></script>
+	 <script src="controllers/order.controller.js"></script>
+	 <link href="css/style.css" rel="stylesheet" />
+</head>
+<body>
+	<nav class="navbar navbar-default">
+	  <div class="container-fluid">
+	    <div class="navbar-header">
+	      <a class="navbar-brand" href="#">foodzonline</a>
+	    </div>
+	    <ul class="nav navbar-nav navbar-right" ng-show="showLinks">
+	      <li ng-class="{active:!orderLink}"><a href="#">Home</a></li>
+	      <li><a href="#">|</a></li>
+	      <li ng-class="{active:orderLink}"><a href="/#!/checkout">Order</a></li>
+	    </ul>
+	  </div>
+	</nav>
+
+	<div class="container">
+		<ui-view></ui-view>
+	</div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+        "southIndian": [
+            {"name":"Idly", "price":40,"quantity":5},
+            {"name":"Vada", "price":50,"quantity":5},
+            {"name":"Plain Dosa", "price":50,"quantity":5},
+            {"name":"Masala Dosa", "price":80,"quantity":5},
+            {"name":"Paneer Dosa", "price":90,"quantity":5},
+            {"name":"Onion uttapam", "price":80,"quantity":5}
+        ],
+        "northIndian": [
+            {"name":"Samosa", "price":20,"quantity":5},
+            {"name":"Poori Aloo Dum", "price":40,"quantity":5},
+            {"name":"Aloo Paratha", "price":50,"quantity":5},
+            {"name":"Masala Paratha", "price":80,"quantity":5},
+            {"name":"Chana Kulcha", "price":80,"quantity":5},
+            {"name":"Chola Batura", "price":50,"quantity":5}
+        ]
+}

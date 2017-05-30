@@ -1,0 +1,82 @@
+<div class="row row-eq-height">
+  <div class="col-sm-7 greyContainer col-eq-height">
+  	<h3>Menu</h3>
+  	<h4>South Indian</h4>
+  	<table>
+  		<tr class="row">
+  			<th class="col-xs-1"></th>
+  			<th class="col-xs-4">Item Name</th>
+  			<th class="col-xs-1">Price</th>
+  			<th class="col-xs-2 col-lg-1"></th>
+  			<th class="col-xs-2 col-lg-1"></th>
+  		</tr>
+  		<tr class="row" ng-repeat="item in menu.southIndian">
+  			<td class="col-xs-1">{{$index + 1}}</td>
+		    <td class="col-xs-4">{{ item.name }}</td>
+		    <td class="col-xs-1">{{ item.price }}</td>
+		    <td class="col-xs-2 col-lg-1 operator" ng-click="addItem(item)">[ + ]</td>
+		    <td class="col-xs-2 col-lg-1 operator" ng-click="removeItem(item)">[ - ]</td>
+	  	</tr>
+  	</table>
+
+  	<h4>North Indian</h4>
+  	<table>
+  		<tr class="row">
+  			<th class="col-xs-1"></th>
+  			<th class="col-xs-4">Item Name</th>
+  			<th class="col-xs-1">Price</th>
+  			<th class="col-xs-2 col-lg-1"></th>
+  			<th class="col-xs-2 col-lg-1"></th>
+  		</tr>
+  		<tr class="row" ng-repeat="item in menu.northIndian">
+  			<td class="col-xs-1">{{$index + 1}}</td>
+		    <td class="col-xs-4">{{ item.name }}</td>
+		    <td class="col-xs-1">{{ item.price }}</td>
+		    <td class="col-xs-2 col-lg-1 operator" ng-click="addItem(item)">[ + ]</td>
+		    <td class="col-xs-2 col-lg-1 operator" ng-click="removeItem(item)">[ - ]</td>
+	  	</tr>
+  	</table>
+  </div>
+  <div class="col-sm-1"></div>
+  <div class="col-sm-4 greyContainer col-eq-height">
+  	<h3>Order</h3>
+  	<table>
+  		<tr class="row">
+  			<th class="col-xs-6">Item Name</th>
+  			<th class="col-xs-4">Count</th>
+  			<th class="col-xs-2">Amount</th>
+  		</tr>
+  		<tr class="row" ng-repeat="item in order.southIndian" ng-if="item.count!=0">
+		    <td class="col-xs-6">{{ item.name }}</td>
+		    <td class="col-xs-4">
+          {{ item.count }}
+          <span class="operator" ng-click="addItem(item)">[+]</span>
+          <span class="operator" ng-click="removeItem(item)">[-]</span>
+        </td>
+		    <td class="col-xs-2">Rs.{{ item.price* item.count}}</td>
+	  	</tr>
+  		<tr class="row" ng-repeat="item in order.northIndian" ng-if="item.count!=0">
+		    <td class="col-xs-6">{{ item.name }}</td>
+		    <td class="col-xs-4">
+          {{ item.count }}
+          <span class="operator" ng-click="addItem(item)">[+]</span>
+          <span class="operator" ng-click="removeItem(item)">[-]</span>
+        </td>
+		    <td class="col-xs-2">Rs.{{ item.price* item.count }}</td>
+	  	</tr>
+	  	<tr class="row totalRow">
+		    <th class="col-xs-6">Total Items</th>
+		    <th class="col-xs-4">{{order.totalItems}}</th>
+		    <th class="col-xs-2">Rs.{{order.totalAmount}}</th>
+	  	</tr>
+  	</table>
+    <div class="center">
+    	<button type="button" class="btn btn-primary" ng-click="saveOrder()">
+    		CHECKOUT
+    	</button>
+    </div>
+    <div class="alert alert-danger" ng-show="checkoutClicked && order.totalAmount==0">
+       You haven't ordered anything.
+    </div>
+  </div>
+</div>

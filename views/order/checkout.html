@@ -1,0 +1,154 @@
+<div class="row row-eq-height">
+  <div class="col-sm-12 greyContainer">
+  	<h3>Checkout</h3>
+  	<div class="row">
+  		<div class="col-sm-1"></div>
+  		<div class="col-sm-9">
+		    <form name="userForm" ng-model="userForm" novalidate>
+		    	<div class="row">
+			        <div class="form-group col-sm-4" >
+			            <label>First Name</label>
+			            <input type="text" name="firstname" class="form-control" ng-model="user.firstname"
+			             ng-pattern="/^[a-zA-Z\s]*$/" required>
+
+			            <div class="help-block" ng-messages="userForm.firstname.$error" ng-if="userForm.firstname.$touched">
+						    <p ng-message="pattern">Only alphabets are allowed.</p>
+						    <p ng-message="required">Field is required.</p>
+
+						</div>
+			        </div>
+
+			        <div class="form-group col-sm-4">
+			            <label>Last Name</label>
+			            <input type="text" name="lastname" class="form-control" ng-model="user.lastname" 
+			            ng-pattern="/^[a-zA-Z\s]*$/" required>
+
+			            <div class="help-block" ng-messages="userForm.lastname.$error" ng-if="userForm.lastname.$touched">
+						    <p ng-message="pattern">Only alphabets are allowed.</p>
+						    <p ng-message="required">Field is required.</p>
+
+						</div>
+			        </div>
+			    </div>
+
+			    <div class="row">
+			        <div class="form-group col-sm-8">
+			            <label>Address 1</label>
+			            <input type="text" name="address1" class="form-control" ng-model="user.address1" required>
+
+			            <div class="help-block" ng-messages="userForm.address1.$error" ng-if="userForm.address1.$touched">
+						    <p ng-message="required">Field is required.</p>
+						    
+						</div>
+			        </div>
+			    </div>
+
+			    <div class="row">
+			        <div class="form-group col-sm-8">
+			            <label>Address 2</label>
+			            <input type="text" name="address2" class="form-control" ng-model="user.address2">
+
+			            <!-- ngMessages goes here -->
+			        </div>
+			    </div>
+
+			    <div class="row">
+			        <div class="form-group col-sm-4">
+			            <label>City</label>
+			            <input type="text" name="city" class="form-control" ng-model="user.city" 
+			            ng-pattern="/^[a-zA-Z\s]*$/" required>
+
+			            <div class="help-block" ng-messages="userForm.city.$error" ng-if="userForm.city.$touched">
+						    <p ng-message="pattern">Only alphabets are allowed.</p>
+						    <p ng-message="required">Field is required.</p>
+						</div>
+			        </div>
+
+			        <div class="form-group col-sm-4">
+			            <label>State</label>
+			            <input type="text" name="state" class="form-control" ng-model="user.state" ng-pattern="/^[a-zA-Z\s]*$/" required>
+
+			            <div class="help-block" ng-messages="userForm.state.$error" ng-if="userForm.state.$touched">
+						    <p ng-message="pattern">Only alphabets are allowed.</p>
+						    <p ng-message="required">Field is required.</p>
+						</div>
+			        </div>
+
+			        <div class="form-group col-sm-4">
+			            <label>Pin</label>
+			            <input type="text" name="pin" class="form-control" ng-model="user.pin" ng-pattern="/^[0-9]{6,6}$/" required>
+
+			            <div class="help-block" ng-messages="userForm.pin.$error" ng-if="userForm.pin.$touched">
+						    <p ng-message="pattern">Please enter a valid pin.</p>
+						    <p ng-message="required">Field is required.</p>
+						</div>
+			        </div>
+			    </div>
+
+			    <div class="row">
+			        <div class="form-group col-sm-4">
+			            <label>Phone Number</label>
+			            <input type="text" name="number" class="form-control" ng-model="user.phone" ng-pattern="/^[0-9]{10,10}$/" required>
+
+			            <!-- ngMessages goes here -->
+			            <div class="help-block" ng-messages="userForm.number.$error" ng-if="userForm.number.$touched">
+						    <p ng-message="pattern">Please enter a valid phone number.</p>
+						    <p ng-message="required">Field is required.</p>
+						</div>
+			        </div>
+		        </div>
+		    </form>
+		    <div class="alert alert-danger" ng-show="confirmClicked && !userForm.$valid">
+       			Please check all fields.
+    		</div>
+	    </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 greyContainer">
+  	<h3>Order Summary</h3>
+  	<div class="row">
+  	<div class="col-xs-1"></div>
+  	<div class="col-xs-8">
+  	<table>
+  		<tr class="row">
+  			<th class="col-xs-6">Item Name</th>
+  			<th class="col-xs-4">Count</th>
+  			<th class="col-xs-2">Amount</th>
+  		</tr>
+  		<tr class="row" ng-repeat="item in order.southIndian" ng-if="item.count!=0">
+		    <td class="col-xs-6">{{ item.name }}</td>
+		    <td class="col-xs-4">
+          {{ item.count }}
+          <span class="operator" ng-click="addItem(item)">[+]</span>
+          <span class="operator" ng-click="removeItem(item)">[-]</span>
+        </td>
+		    <td class="col-xs-2">Rs.{{ item.price* item.count}}</td>
+	  	</tr>
+  		<tr class="row" ng-repeat="item in order.northIndian" ng-if="item.count!=0">
+		    <td class="col-xs-6">{{ item.name }}</td>
+		    <td class="col-xs-4">
+          {{ item.count }}
+          <span class="operator" ng-click="addItem(item)">[+]</span>
+          <span class="operator" ng-click="removeItem(item)">[-]</span>
+        </td>
+		    <td class="col-xs-2">Rs.{{ item.price* item.count }}</td>
+	  	</tr>
+	  	<tr class="row totalRow">
+		    <th class="col-xs-6">Total Items</th>
+		    <th class="col-xs-4">{{order.totalItems}}</th>
+		    <th class="col-xs-2">Rs.{{order.totalAmount}}</th>
+	  	</tr>
+  	</table>
+  	</div>
+  	</div>
+
+  </div>
+</div>
+<div class="center">
+	<button type="button" class="btn btn-primary" ng-click="confirmOrder()">
+		CONFIRM ORDER
+	</button>
+</div>
